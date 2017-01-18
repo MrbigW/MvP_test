@@ -1,4 +1,4 @@
-package com.wrk.mvp_demo2.model;
+package com.wrk.mvp_demo2.model.ip;
 
 import android.content.Context;
 

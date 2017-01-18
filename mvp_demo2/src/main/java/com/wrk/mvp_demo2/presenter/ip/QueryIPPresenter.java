@@ -1,12 +1,12 @@
-package com.wrk.mvp_demo2.presenter;
+package com.wrk.mvp_demo2.presenter.ip;
 
 import com.socks.library.KLog;
 import com.wrk.mvp_demo2.base.BasePresenter;
 import com.wrk.mvp_demo2.base.ibase.IOnCallBack;
 import com.wrk.mvp_demo2.bean.IPHttpResult;
 import com.wrk.mvp_demo2.bean.IpInfo;
-import com.wrk.mvp_demo2.model.QueryIPModel;
-import com.wrk.mvp_demo2.view.IQueryIPView;
+import com.wrk.mvp_demo2.model.ip.QueryIPModel;
+import com.wrk.mvp_demo2.view.ip.IQueryIPView;
 
 /**
  * Created by MrbigW on 2017/1/13.
@@ -42,12 +42,12 @@ public class QueryIPPresenter extends BasePresenter<QueryIPModel, IQueryIPView> 
                 @Override
                 public void onSuccessful(IPHttpResult<IpInfo> ipInfo) {   //查询成功的回调
                     mView.hideProgress();
-                    mView.showDataSuccess(ipInfo);
+                    mView.showDataSuccess(ipInfo.getData());
                     KLog.e("查询到了：" + ipInfo.toString());
                 }
 
                 @Override
-                public void onFaild(String errorMsg) {  //  查询失败的回调
+                public void onFailed(String errorMsg) {  //  查询失败的回调
                     mView.hideProgress();
                     KLog.e(errorMsg);
                     mView.toastInfo(errorMsg);
@@ -61,6 +61,6 @@ public class QueryIPPresenter extends BasePresenter<QueryIPModel, IQueryIPView> 
 
     @Override
     public void onDestroy() {
-
+        mModel.unSubscribe();
     }
 }

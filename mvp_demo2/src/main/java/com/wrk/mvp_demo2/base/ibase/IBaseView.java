@@ -2,6 +2,8 @@ package com.wrk.mvp_demo2.base.ibase;
 
 import android.content.Context;
 
+import java.util.List;
+
 /**
  * Created by MrbigW on 2017/1/13.
  * weChat:1024057635
@@ -17,6 +19,8 @@ public interface IBaseView<T> {
     void toastInfo(String info); //  通过Toast显示信息
 
     void showDataSuccess(T data);   //  成功显示查询到的数据到界面
+
+    void showListDataSuccess(List<T> datas);    //  成功显示查询到的所有集合
 
     void showDataError(Throwable throwable);    //  显示查询到的数据到界面失败
 

@@ -1,4 +1,4 @@
-package com.wrk.mvp_demo2.presenter;
+package com.wrk.mvp_demo2.presenter.ip;
 
 import com.wrk.mvp_demo2.base.ibase.IBasePresenter;
 

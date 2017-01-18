@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.wrk.mvp_demo2.view.MoviesActivity;
 import com.wrk.mvp_demo2.view.QueryIPActivity;
 
 import butterknife.BindView;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, QueryIPActivity.class));
                 break;
             case R.id.btn_main_movie:
+                startActivity(new Intent(MainActivity.this, MoviesActivity.class));
                 break;
         }
     }

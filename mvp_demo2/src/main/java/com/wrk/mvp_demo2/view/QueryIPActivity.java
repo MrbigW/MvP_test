@@ -2,6 +2,7 @@ package com.wrk.mvp_demo2.view;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,10 +11,12 @@ import android.widget.TextView;
 
 import com.wrk.mvp_demo2.R;
 import com.wrk.mvp_demo2.base.BaseActivty;
-import com.wrk.mvp_demo2.bean.IPHttpResult;
 import com.wrk.mvp_demo2.bean.IpInfo;
-import com.wrk.mvp_demo2.presenter.QueryIPPresenter;
+import com.wrk.mvp_demo2.presenter.ip.QueryIPPresenter;
 import com.wrk.mvp_demo2.utils.ToastUtils;
+import com.wrk.mvp_demo2.view.ip.IQueryIPView;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -87,16 +90,21 @@ public class QueryIPActivity extends BaseActivty implements IQueryIPView {
     }
 
     @Override
-    public void showDataSuccess(Object data) {
-        IPHttpResult<IpInfo> ipInfo = (IPHttpResult<IpInfo>) data;
-        tvIpInput.setText(ipInfo.getData().getIp());
-        tvIpArea.setText(ipInfo.getData().getArea());
-        tvIpCity.setText(ipInfo.getData().getCity());
-        tvIpCountry.setText(ipInfo.getData().getCountry());
-        tvIpProvince.setText(ipInfo.getData().getRegion());
-        tvIpIsp.setText(ipInfo.getData().getIsp());
+    public void showDataSuccess(IpInfo data) {
+        tvIpInput.setText(data.getIp());
+        tvIpArea.setText(data.getArea());
+        tvIpCity.setText(data.getCity());
+        tvIpCountry.setText(data.getCountry());
+        tvIpProvince.setText(data.getRegion());
+        tvIpIsp.setText(data.getIsp());
+    }
+
+    @Override
+    public void showListDataSuccess(List<IpInfo> datas) {
 
     }
+
+
 
     @Override
     public void showDataError(Throwable throwable) {
@@ -124,6 +132,7 @@ public class QueryIPActivity extends BaseActivty implements IQueryIPView {
                 mQueryIPPresenter.queryIp();
                 break;
             case R.id.btn_ip_movie:
+                startActivity(new Intent(QueryIPActivity.this, MoviesActivity.class));
                 break;
         }
     }
@@ -139,6 +148,7 @@ public class QueryIPActivity extends BaseActivty implements IQueryIPView {
 
         if (null != mQueryIPPresenter) {
             mQueryIPPresenter.onDestroy();
+            mQueryIPPresenter = null;
         }
 
     }

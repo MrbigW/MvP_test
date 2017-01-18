@@ -1,6 +1,7 @@
-package com.wrk.mvp_demo2.view;
+package com.wrk.mvp_demo2.view.ip;
 
 import com.wrk.mvp_demo2.base.ibase.IBaseView;
+import com.wrk.mvp_demo2.bean.IpInfo;
 
 /**
  * Created by MrbigW on 2017/1/16.
@@ -10,7 +11,7 @@ import com.wrk.mvp_demo2.base.ibase.IBaseView;
  * -------------------=.=------------------------
  */
 
-public interface IQueryIPView extends IBaseView {
+public interface IQueryIPView extends IBaseView<IpInfo>{
 
     String getInputIp();
 

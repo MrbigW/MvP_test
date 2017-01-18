@@ -48,14 +48,14 @@ public class BaseModel implements IBaseRxJava {
                         HttpException httpException = (HttpException) e;
                         int code = httpException.code();
                         if (code == 500 || code == 404) {
-                            callBack.onFaild("服务器出错！");
+                            callBack.onFailed("服务器出错！");
                         }
                     } else if (e instanceof ConnectException) {
-                        callBack.onFaild("网络断开，请打开网络！");
+                        callBack.onFailed("网络断开，请打开网络！");
                     } else if (e instanceof SocketTimeoutException) {
-                        callBack.onFaild("网络连接超时！");
+                        callBack.onFailed("网络连接超时！");
                     } else {
-                        callBack.onFaild("发送未知错误：" + e.getMessage());
+                        callBack.onFailed("发送未知错误：" + e.getMessage());
                         KLog.e("MyLog", e.getMessage());
                     }
                 }
